@@ -1,0 +1,105 @@
+﻿@model ERPManager.Web.Models.CoolApps.CoolAppListModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Index";
+}
+
+<div class="panel">
+    <div class="panel-body">
+
+        <table id="tblCoolComList" class="table table-hover dataTable table-striped w-full dtr-inline" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th>@(Localize.GetLocaleString("CreatedDate"))</th>
+                    <th>@(Localize.GetLocaleString("Image"))</th>
+                    <th>@(Localize.GetLocaleString("Id"))</th>
+                    <th>@(Localize.GetLocaleString("AppCode"))</th>
+                    <th>@(Localize.GetLocaleString("CompanyId"))</th>
+                    <th>@(Localize.GetLocaleString("CoolCompanyId"))</th>
+                    <th class="text-center">@(Localize.GetLocaleString("Actions"))</th>
+                </tr>
+            </thead>
+        </table>
+
+
+
+    </div>
+
+    @*<div class="site-action" data-plugin="actionBtn">
+        <button type="button" onclick="CreateOrEditTableItem('@Localize.GetLocaleString("Create")','@("/CoolApp/Create")')" class="site-action-toggle btn-raised btn btn-success btn-floating">
+            <i class="front-icon wb-plus animation-scale-up" aria-hidden="true"></i>
+            <i class="back-icon wb-close animation-scale-up" aria-hidden="true"></i>
+        </button>
+    </div>*@
+    <ul class="mfb-component--br mfb-slidein-spring" data-mfb-toggle="click" data-plugin="actionBtn">
+        <li class="mfb-component__wrap">
+            <a  onclick="CreateOrEditTableItem('@Localize.GetLocaleString("Create")','@("/CoolApp/Create")')"  class="mfb-component__button--main mfb-component-button-main-green btn-raised resetHref" data-mfb-label="Kapat">
+                <i class="mfb-component__main-icon--resting fa fa-plus"></i>
+                <i class="mfb-component__main-icon--active fa fa-times"></i>
+            </a>
+
+        </li>
+    </ul>
+
+    @*<item-list-pager page-index="@Model.PageIndex"
+        page-count="@Model.PageCount"
+        page-size="@_erpManagerSettings.PageSize"
+        page-controller="CoolCom"
+        page-Action="Index"></item-list-pager>*@
+
+
+
+
+
+
+</div>
+
+
+@section scripts{
+    <script type="text/javascript">
+
+
+     $(document).ready(function () {
+        @* DataTable *@
+         $('#tblCoolComList').DataTable({
+             "processing": true,
+             "serverSide": true,
+            "ajax": {
+                "url": '@Url.Action("LoadTable", "CoolApp")',
+                "type": "POST"
+            },
+            "columns": [
+                { "data": "createdDate", "orderable": true, "visible": false, "name": "CreatedDate"  },
+                { "data": "image", "orderable": true, "autoWidth": true },
+                { "data": "id", "orderable": true, "autoWidth": true, "name": "Id"},
+                { "data": "appCode", "orderable": true, "autoWidth": true, "name": "AppCode" },
+                { "data": "companyId", "orderable": true, "autoWidth": true, "name": "CompanyId"},
+                { "data": "coolCompanyId", "orderable": true, "autoWidth": true, "name": "CoolCompanyId"},
+
+               {
+                    data: null,
+                    orderable: true,
+                    "className": "text-center",
+                    "render": function (data) {
+                        var content =
+                            '<div class="btn-group">' +
+                            '<button type="button" class="btn btn-success  btn-sm" onclick="CreateOrEditTableItem(\'@Localize.GetLocaleString("Edit")\',\'/CoolApp/Edit/' + data.id + '\')"  ><i class="fa fa-pencil-square-o" aria-hidden="true"></i> @Localize.GetLocaleString("Edit") </button>' +
+                            '&nbsp;' +
+                            '<button type="button" class="btn btn-danger  btn-sm padd" onclick="DeleteTableItem(\'@Localize.GetLocaleString("Are You Sure?")\',\'/CoolApp/Delete/' + data.id + '\',\'@Localize.GetLocaleString("Yes")\',\'@Localize.GetLocaleString("No")\')"  ><i class="fa fa-trash" aria-hidden="true"></i> @Localize.GetLocaleString("Delete") </button>' +
+                            @*'<button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' +
+                            '<i class="fa fa-wrench fa-fw fa-lg" aria-hidden="true"></i>' +
+                            '</button>' +
+                            '<ul class="dropdown-menu dropdown-menu-right">' +
+                                        '<li><a href="javascript:void(0)" onclick="CreateOrEditTableItem(\'@Localize.GetLocaleString("Edit")\',\'/Coolcom/Edit/'+ data.companyId + '\')" class="dataUpdate" title="@(Localize.GetLocaleString("Edit") )"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> @Localize.GetLocaleString("Edit") </a></li>' +
+                            '<li><a href="javascript:void(0)"  onclick="DeleteTableItem(\'@Localize.GetLocaleString("Are You Sure?")\',\'/Coolcom/Delete/' + data.CompanyId + '\',\'@Localize.GetLocaleString("Yes")\',\'@Localize.GetLocaleString("No")\')" class="dataDelete text-danger" title="@Localize.GetLocaleString("Delete")"><i class="fa fa-trash" aria-hidden="true"></i> @Localize.GetLocaleString("Delete")</a></li>' +
+                            '</ul>' +*@
+                            '</div>';
+                        return content;
+                    }
+                }
+            ]
+        });
+
+    });
+    </script>
+}

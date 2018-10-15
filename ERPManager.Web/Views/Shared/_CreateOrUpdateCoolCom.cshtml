@@ -1,0 +1,36 @@
+﻿@model ERPManager.Web.Models.CoolCompany.CoolComModel
+    <input type="hidden" asp-for="Id" />
+@*<div class="form-group form-material floating" data-plugin="formMaterial">
+    <input asp-for="CompanyId" type="text" class="form-control" />
+    <label asp-for="CompanyId" class="floating-label"></label>
+    <span asp-validation-for="CompanyId"></span>
+
+</div>
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    <input asp-for="CoolCompanyId" class="form-control" />
+    <label asp-for="CoolCompanyId" class="floating-label"></label>
+    <span asp-validation-for="CoolCompanyId"></span>
+</div>*@
+
+<div class="row">
+    <div class="col-md-12">
+       
+      
+            <div class="form-group row">
+                <label asp-for="CompanyId" class="col-md-3 label-list "style="text-align:right">@Localize.GetLocaleString("CompanyId")</label>
+                <div class="col-md-9">
+                    <input asp-for="CompanyId" class="form-control" />
+                    <span asp-validation-for="CompanyId"></span>
+                </div>
+            </div>
+        <div class="form-group row">
+            <label asp-for="CoolCompanyId" class="col-md-3 label-list"style="text-align:right">@Localize.GetLocaleString("CoolCompanyId")</label>
+            <div class="col-md-9">
+                <input asp-for="CoolCompanyId" class="form-control" />
+                <span asp-validation-for="CoolCompanyId"></span>
+            </div>
+        </div>
+           
+           
+    </div>
+</div>

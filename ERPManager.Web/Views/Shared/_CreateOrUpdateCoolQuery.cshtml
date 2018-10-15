@@ -1,0 +1,86 @@
+﻿@model ERPManager.Web.Models.CoolQueries.CoolQueryModel
+<input type="hidden" asp-for="Id" />
+@*<div class="form-group form-material floating" data-plugin="formMaterial">
+
+    @Html.DropDownListFor(model => model.CompanyId, Model.AvailableCompanies, new { @class = "form-control" })
+    <label asp-for="CompanyId" class="floating-label"></label>
+    <span asp-validation-for="CompanyId"></span>
+
+</div>
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    <input asp-for="QueryCode" class="form-control" />
+    <label asp-for="QueryCode" class="floating-label"></label>
+    <span asp-validation-for="QueryCode"></span>
+</div>
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    @Html.DropDownListFor(model => model.CoolQueryDirection, Model.AvailableDirections, new { @class = "form-control" })
+    <label asp-for="CoolQueryDirection" class="floating-label"></label>
+    <span asp-validation-for="CoolQueryDirection"></span>
+</div>
+
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    <input asp-for="Description" class="form-control" />
+    <label asp-for="Description" class="floating-label"></label>
+    <span asp-validation-for="Description"></span>
+</div>
+
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    <textarea asp-for="Query" class="form-control" ></textarea>
+    <label asp-for="Query" class="floating-label"></label>
+    <span asp-validation-for="Query"></span>
+</div>*@
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="form-group row">
+            <label asp-for="CompanyId" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("CompanyId")</label>
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.CompanyId, Model.AvailableCompanies, new { @class = "form-control" })
+                <span asp-validation-for="CompanyId"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="QueryCode" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("QueryCode")</label>
+            <div class="col-md-9">
+                <input asp-for="QueryCode" class="form-control" />
+                <span asp-validation-for="QueryCode"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CoolQueryDirection" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("CoolQueryDirection")</label>
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.CoolQueryDirection, Model.AvailableDirections, new { @class = "form-control" })
+                <span asp-validation-for="CoolQueryDirection"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Description" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("Description")</label>
+            <div class="col-md-9">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="Query" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("Query")</label>
+            <div class="col-md-9">
+                <input asp-for="Query" class="form-control" />
+                <span asp-validation-for="Query"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+@*
+    public string QueryCode { get; set; }
+
+    public CoolQueryDirection CoolQueryDirection { get; set; }
+
+    public string CompanyId { get; set; }
+
+    public string Description { get; set; } *@

@@ -1,0 +1,13 @@
+﻿@model ERPManager.Web.Models.Home.DashboardModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Index</h2>*@
+<div class="row">
+    @foreach (var dataModel in Model.Items)
+    {
+        @await Html.PartialAsync("~/Views/Home/_DashboardDataItem.cshtml", dataModel)
+    }
+</div>

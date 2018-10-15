@@ -1,0 +1,17 @@
+﻿@model ERPManager.Web.Models.CoolCompany.CoolComModel
+@{
+    ViewData["Title"] = Localize.GetLocaleString("Edit");
+    Layout = null; //"~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="CoolCom" asp-action="Edit" method="post">
+  @await  Html.PartialAsync("_CreateOrUpdateCoolCom", Model)
+    <button type="button" onclick="InsertTableItem(this,'@("/CoolCom/Edit/"+ Model.CompanyId)')" class="btn btn-info btn-right"><i class="fa fa-check" aria-hidden="true"></i> @Localize.GetLocaleString("Update")</button>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#createOrEditFormModalHeader").addClass("color-header");
+    });
+
+</script>

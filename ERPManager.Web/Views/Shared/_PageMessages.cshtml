@@ -1,0 +1,81 @@
+﻿@model ERPManager.Entities.Model.Base.BaseModel
+
+<style>
+    .valign {
+        display: flex;
+        flex-direction: row;
+        font-size: 14px !important;
+    }
+
+        .valign > [class^="col-"],
+        .valign > [class*=" col-"] {
+            display: flex;
+            align-items: center;
+        }
+
+        .valign > [class*=" col-8"] {
+            justify-content: center;
+        }
+
+    @@media all and (max-width: 767px) {
+        .valign {
+            flex-direction: column;
+        }
+    }
+</style>
+
+@if (!Model.IsSuccess)
+{
+    string errors = string.Empty;
+
+    foreach (var error in Model.Errors)
+    {
+        if (!string.IsNullOrEmpty(error))
+        {
+            errors += error + " <br />";
+        }
+    }
+    <script type="text/javascript">
+    $(document).ready(function () {
+        @if(!string.IsNullOrEmpty(errors))
+            {
+        <text>ShowErrorMessage('</text>@Html.Raw(errors) <text>');</text>
+            }
+        });
+
+    </script>
+
+}
+else if (!string.IsNullOrEmpty(Model.SuccessMessage))
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            ShowSuccessMessage('@Html.Raw(Model.SuccessMessage)');
+        });
+
+    </script>
+    //Session["SuccessMessage"] = null;
+}
+
+
+<script type="text/javascript">
+    function ShowErrorMessage(em) {
+        toastr.error('<div class="row valign"><div class="col-sm-4"><img src="/Assets/images/messages/hata.png" width="70" height="70" /></div><div class="col-sm-8">' + em + '</div></div>');
+        HideMessage();
+    }
+    function ShowSuccessMessage(sm) {
+        toastr.success('<div class="row valign"><div class="col-sm-4"><img src="/Assets/images/messages/basarili.png" width="70" height="70" /></div><div class="col-sm-8">' + sm + '</div></div>');
+        HideMessage();
+    }
+    function ShowInfoMessage(im) {
+        toastr.info('<div class="row valign"><div class="col-sm-4"><img src="/Assets/images/messages/bilgi.png" width="70" height="70" /></div><div class="col-sm-8">' + im + '</div></div>');
+        HideMessage();
+    }
+    function ShowWarningMessage(wm) {
+        toastr.warning('<div class="row valign"><div class="col-sm-4"><img src="/Assets/images/messages/uyari.png" width="70" height="99" /></div><div class="col-sm-8">' + wm + '</div></div>');
+        HideMessage();
+    }
+    function HideMessage() {
+        var t = setTimeout(function () { toastr.remove(); }, 4000);
+    }
+</script>

@@ -1,0 +1,19 @@
+﻿@model ERPManager.Web.Models.CoolUsers.CoolUserModel
+@{
+    ViewData["Title"] = Localize.GetLocaleString("Edit");
+    Layout = null; //"~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-controller="CoolUser" asp-action="Edit" method="post">
+    @await  Html.PartialAsync("_CreateOrUpdateCoolUser", Model)
+    <button type="button" onclick="InsertTableItem(this,'@("/CoolUser/Edit/"+ Model.Id)')" class="btn btn-info btn-right"><i class="fa fa-check" aria-hidden="true"></i> @Localize.GetLocaleString("Update")</button>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#createOrEditFormModalHeader").addClass("color-header");
+      
+        
+    });
+
+</script>

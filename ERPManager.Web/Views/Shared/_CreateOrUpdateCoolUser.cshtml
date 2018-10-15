@@ -1,0 +1,56 @@
+﻿@model ERPManager.Web.Models.CoolUsers.CoolUserModel
+<input type="hidden" asp-for="Id" />
+@*<div class="form-group form-material floating" data-plugin="formMaterial">
+   
+
+    @Html.DropDownListFor(model=> model.CompanyId, Model.AvailableCompanies, new {@class="form-control" })
+    <label asp-for="CompanyId" class="floating-label"></label>*@
+    @*<select asp-for="CompanyId" class="floating-label">
+        <option value="">@Localize.GetLocaleString("PleaseSelect")</option>
+        @foreach(var ac in Model.AvailableCompanies)
+        {
+            <option value="@ac.Value">@ac.Text</option>
+        }
+    </select>*@
+    @*<span asp-validation-for="CompanyId"></span>
+
+</div>
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    <input asp-for="UserId" class="form-control" />
+    <label asp-for="UserId" class="floating-label"></label>
+    <span asp-validation-for="UserId"></span>
+</div>
+<div class="form-group form-material floating" data-plugin="formMaterial">
+    <input asp-for="CoolUserId" class="form-control" />
+    <label asp-for="CoolUserId" class="floating-label"></label>
+    <span asp-validation-for="CoolUserId"></span>
+</div>*@
+
+<div class="row">
+    <div class="col-md-12">
+
+
+        <div class="form-group row">
+            <label asp-for="CompanyId" class="col-md-3 label-list" style="text-align:right"></label>
+            <div class="col-md-9">
+                @Html.DropDownListFor(model => model.CompanyId, Model.AvailableCompanies, new { @class = "form-control" })
+                <span asp-validation-for="CompanyId"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="UserId" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("UserId")</label>
+            <div class="col-md-9">
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label asp-for="CoolUserId" class="col-md-3 label-list" style="text-align:right">@Localize.GetLocaleString("CoolUserId")</label>
+            <div class="col-md-9">
+                <input asp-for="CoolUserId" class="form-control" />
+                <span asp-validation-for="CoolUserId"></span>
+            </div>
+        </div>
+
+    </div>
+</div>

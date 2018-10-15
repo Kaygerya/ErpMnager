@@ -1,0 +1,64 @@
+﻿@model ERPManager.Web.Models.Account.LoginModel
+@{
+    Layout = "~/Views/Shared/_LayoutWithoutMenus.cshtml";
+    ViewData["Title"] = "Login";
+}
+@*<h2>Login</h2>
+
+    <div class="brand">
+        <img class="brand-img" src="~/Assets/images/logo-blue.png" alt="...">
+    </div>*@
+<div class="panel row">
+    <div class="panel-body" style="width:400px">
+        <div class="brand margin-bottom-10">
+            <a href="/User/Login"><img class="brand-img" src="~/assets/images/coollogo.png"></a>
+        </div>
+        <br />
+        <p>Uygulamayı kullanabilmek için lütfen giriş yapın</p>
+        <form asp-controller="Account" asp-action="Login" method="post">
+
+            <div class="form-group formGroupList" data-plugin="formMaterial">
+                <label asp-for="UserName" class="sr-only">E-posta</label>
+                <input asp-for="UserName" type="text" class="form-control" placeholder="E-posta" autocomplete="email">
+            </div>
+            <div class="form-group formGroupList" data-plugin="formMaterial">
+                <label asp-for="Password" class="sr-only">Şifre</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Şifre" autocomplete="off">
+            </div>
+            <div class="form-group formGroupList" data-plugin="formMaterial">
+                <label asp-for="LanguageId" class="sr-only">Language</label>
+                @*<select class="form-control" id="SelectedLanguage" name="SelectedLanguage">*@
+                @Html.DropDownListFor(model => model.LanguageId, Model.AvailableLanguages, new { @class = "form-control" })
+                @*<option value="tr-TR">Türkçe</option>*@
+                @*</select>*@
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">
+                Giriş
+            </button>
+            @*<div class="form-group form-material floating" data-plugin="formMaterial">
+                    <input asp-for="UserName" type="text" class="form-control" />
+                    <label asp-for="UserName" class="floating-label"></label>
+                </div>
+
+                <div class="form-group form-material floating" data-plugin="formMaterial">
+                    <input asp-for="Password" type="password" class="form-control" />
+                    <label asp-for="Password" class="floating-label"></label>
+                </div>
+                <div class="form-group form-material floating" data-plugin="formMaterial">
+                    @Html.DropDownListFor(model => model.LanguageId, Model.AvailableLanguages, new { @class = "form-control" })
+                    <label asp-for="LanguageId" class="floating-label"></label>
+                </div>
+                <div class="form-group clearfix" >
+                    <div class="checkbox-custom checkbox-inline checkbox-primary checkbox-lg float-left">
+                        <input asp-for="RememberMe" type="checkbox" />
+                        <label asp-for="RememberMe" class="floating-label"></label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block btn-lg mt-40">Login</button>*@
+
+        </form>
+        <p class="padding-top-15 font-size-12">Detaylı bilgi için <a href="https://www.coolatform.com/" target="_blank" title="CoolAtForm | Sosyal İş Platformunuz" style="color: #76838f; text-decoration: underline;">www.coolatform.com</a></p>
+
+    </div>
+</div>

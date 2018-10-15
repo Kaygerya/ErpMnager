@@ -1,0 +1,70 @@
+﻿@model ERPManager.Web.Models.Home.DashboardDataModel
+
+<div class="col-lg-6 col-md-6 col-sm-12 masonry-item" >
+    <!-- Panel Message -->
+    <div class="panel" id="messge">
+        <div class="panel-heading">
+           <h3 class="panel-title font-size-16 @Model.CssClass"> <i class="fa @Model.FaClass padding-right-3"></i> @Model.Name  <span class="float-right badge badge-round"><i class="fa fa-angle-down" aria-hidden="true"></i> @Model.Count @Localize.GetLocaleString("Records")</span></h3>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group list-group-full h-250 scrollable is-enabled scrollable-vertical" data-plugin="scrollable" style="position: relative;">
+                <div data-role="container" class="scrollable-container" style="height: 250px; width: 712px;">
+                    <div data-role="content" class="scrollable-content" style="width: 695px;">
+                        @if (Model.Items.Count > 0)
+                        {
+                            foreach (var item in Model.Items)
+                            {
+                                <li class="list-group-item"style="border:none">
+                                    <div class="media">
+                                        @if (!string.IsNullOrEmpty(item.Images))
+                                        {
+                                            <div class="pr-20">
+                                                <span class="@(Model.UseAvatar ?"avatar avatar-online" : "")">
+                                                    <img src="@item.Images" alt="">
+                                                    <i></i>
+                                                </span>
+                                            </div>
+                                        }
+                                        <div class="media-body">
+                                            <h5 class="list-group-item-heading mt-0 mb-5">
+                                                <small class="float-right">3 days ago</small>
+                                                @item.FirstDataIds
+                                            </h5>
+                                            <p class="list-group-item-text">@item.SecondDataIds</p>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        }
+                        else
+                        {
+
+                            <li class="list-group-item"style="border:none">
+                                <div class="media">
+                                        <div class="pr-20">
+                                                <i class="fa fa-icon-plus"></i>
+                                        </div>
+                                    <div class="media-body">
+                                        <h5 class="list-group-item-heading mt-0 mb-5">
+                                            @Model.ZetoItemText
+                                        </h5>
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                        
+                    </div>
+                </div>
+                <div class="scrollable-bar scrollable-bar-vertical scrollable-bar-hide" draggable="false"><div class="scrollable-bar-handle" style="height: 114.367px; transform: translate3d(0px, 127.633px, 0px);"></div></div>
+            </ul>
+            <div class="panel-footer">
+                
+                    <span class="float-left span-color">@Localize.GetLocaleString("ShowingcountOfCount", new object[] { Model.Count, Model.ShowCount })</span>  <a href="@Model.ManageButton" class="btn btn-success btn-small float-right btn-float-right"><i class="icon wb-edit"></i> @Localize.GetLocaleString("Manage") </a>
+               
+                </div>
+        </div>
+     
+    </div>
+    <!-- End Panel Message -->
+</div>

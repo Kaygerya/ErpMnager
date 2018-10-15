@@ -1,0 +1,17 @@
+{
+  "sProcessing": "Kayıtlar yükleniyor...<br>Lütfen bekleyin.",
+  "sLengthMenu": "Her sayfada _MENU_ adet kayıt göster",
+  "sZeroRecords": "<div class=\"text-center\"><span class=\"text-red\"><i class=\"icon fa fa-ban\"></i> Kayıt bulunmamaktadır!</span></div>",
+  "sInfo": " Gösterilen sayfa : _PAGE_ / _PAGES_",
+  "sInfoEmpty": "",
+  "sInfoFiltered": "( _MAX_ Kayıt İçerisinden Bulunan)",
+  "sInfoPostFix": "",
+  "sSearch": "Arama : ",
+  "sUrl": "",
+  "oPaginate": {
+    "sFirst": "İlk",
+    "sPrevious": "Önceki",
+    "sNext": "Sonraki",
+    "sLast": "Son"
+  }
+}
